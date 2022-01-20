@@ -190,7 +190,7 @@ public class DemowebshopTest extends TestBase {
                                 .then()
                                 .statusCode(302)
                                 .extract()
-                                .cookie("__RequestVerificationToken, NOPCOMMERCE.AUTH");
+                                .cookie("__RequestVerificationToken");
 
 
                 String data = "__RequestVerificationToken:" + requestCookie + "OldPassword:"+ password +
@@ -198,7 +198,7 @@ public class DemowebshopTest extends TestBase {
                         " ConfirmNewPassword:" + newPassword;
                 given()
                         .contentType("application/x-www-form-urlencoded")
-                        .cookie(requestCookie)
+                        .cookie(cookie)
                         .body(data)
                         .when()
                         .post("/customer/changepassword");
